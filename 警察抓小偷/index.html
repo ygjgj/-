@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>警察抓小偷模拟器 - 智能防循环版</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>警察抓小偷模拟器 - 智能防循环版</h1>
+    
+    <div class="game-container">
+        <!-- 左侧控制面板 -->
+        <div class="control-panel">
+            <div class="map-config">
+                <h2>地图配置</h2>
+                <div class="config-group">
+                    <label for="rows">行数 (N):</label>
+                    <input type="number" id="rows" min="5" max="30" value="10">
+                </div>
+                <div class="config-group">
+                    <label for="cols">列数 (M):</label>
+                    <input type="number" id="cols" min="5" max="30" value="10">
+                </div>
+                <div class="config-group">
+                    <label for="obstacle-density">障碍物密度:</label>
+                    <select id="obstacle-density">
+                        <option value="0.1">低 (10%)</option>
+                        <option value="0.2" selected>中 (20%)</option>
+                        <option value="0.3">高 (30%)</option>
+                    </select>
+                </div>
+                <div class="config-group">
+                    <label for="thief-count">小偷数量:</label>
+                    <input type="number" id="thief-count" min="1" max="5" value="2">
+                </div>
+                <button id="generate-btn">生成随机地图</button>
+                <button id="start-btn">开始模拟</button>
+                <button id="reset-btn">重置游戏</button>
+            </div>
+            <div class="ai-debug">
+                <h3>AI策略调试</h3>
+                <div class="status-item">警察策略: <span id="police-strategy" class="status-value">待机</span></div>
+                <div class="status-item">小偷策略: <span id="thief-strategy" class="status-value">待机</span></div>
+                <div class="status-item">路径历史: <span id="path-history" class="status-value">0</span>步</div>
+                <div class="status-item">循环检测: <span id="loop-status" class="status-value">正常</span></div>
+            </div>
+        </div>
+        
+        <!-- 右侧地图容器 -->
+        <div class="map-display-container">
+            <div id="map-display" class="game-map"></div>
+        </div>
+    </div>
+    
+    <div class="stats-panel">
+        <h2>游戏状态</h2>
+        <div class="status-item">当前回合: <span id="turn-count" class="status-value">0</span></div>
+        <div class="status-item">已抓获小偷: <span id="captured-count" class="status-value">0</span>/<span id="total-thieves">2</span></div>
+        <div class="status-item">警察位置: <span id="police-pos" class="status-value">(0, 0)</span></div>
+        <div class="status-item">游戏状态: <span id="game-status" class="status-value">等待开始</span></div>
+        <div class="status-item">小偷行动: <span id="thief-action" class="thief-action">未开始</span></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
